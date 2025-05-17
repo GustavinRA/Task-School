@@ -1,1 +1,2 @@
 # Task-School
+Este projeto foi desenvolvido como parte da disciplina de Fábrica de Software e tem como objetivo criar uma ferramenta de monitoramento de atividades para equipes de desenvolvimento. A aplicação permite o gerenciamento de tarefas e o acompanhamento do progresso dos projetos utilizando o modelo Kanban, promovendo organização, produtividade e visibilidade em tempo real do fluxo de trabalho.
