@@ -34,6 +34,12 @@ jobs:
     - name: Instalar dependências
       run: composer install --prefer-dist --no-progress --no-suggest
 
+    - name: Instalar dependências do Node
+      run: npm ci
+
+    - name: Compilar assets com Vite
+      run: npm run build
+
     - name: Criar arquivo .env
       run: |
         echo "APP_NAME=Laravel" > .env
