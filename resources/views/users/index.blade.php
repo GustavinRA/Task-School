@@ -1,36 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Scholl</title>
-</head>
-<body>
-    <a href="{{route('user.create')}}">Cadastrar</a><br>
-    <h2>Listar Usuários</h2>
+@extends('layouts.admin')
 
-    @if(session('success'))
-        <p style="color: #086;">
-            {{ session('success') }}
-        </p>
-    @endif
+@section('content')
+<div class="card mt-4 mb-4 border-light shadow">
 
-    @forelse ($users as $user)
-        ID: {{ $user->id }}<br>
-        Nome: {{ $user->name }}<br>
-        E-mail: {{ $user->email }}<br> 
-        <a href=" {{ route('user.show', ['user' => $user->id]) }}">Visualizar</a>
-        <a href=" {{ route('user.edit', ['user' => $user->id]) }}">Editar</a>        
-        <form method="POST" action="{{ route('user.destroy', ['user' => $user->id]) }}">
-            @csrf
-            @method('delete')
-            <button type="submit" onclick="return confirm('Tem certeza que desejar apagar esse registro?')">Apagar</button>
-        </form>
-        
-        <hr>
-    @empty
-        
-    @endforelse
 
-</body>
-</html>
+    <div class="card-header hstack gap-2">
+        <span>Listar Usuários</span>
+        <span class="ms-auto">
+            <a href="{{ route('user.create') }}" class="btn btn-warning">Cadastrar usuário</a>
+
+        </span>
+    </div>
+
+    <div class="card-body">
+
+        <x-alert />
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col" class="text-center">Ações</th>
+                </tr>
+            </thead>
+
+
+            @forelse ($users as $user)
+
+            <tr>
+                <th>{{ $user->id }}</th>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
+                <td class="text-center"> <a href=" {{ route('user.show', ['user' => $user->id]) }}" class="btn btn-primary btn-sm">Visualizar</a>
+                    <a href=" {{ route('user.edit', ['user' => $user->id]) }}" class="btn btn-warning btn-sm">Editar</a>
+                    <form method="POST" action="{{ route('user.destroy', ['user' => $user->id]) }}" class="d-inline">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" onclick="return confirm('Tem certeza que desejar apagar esse registro?')" class="btn btn-danger btn-sm">Apagar</button>
+                    </form>
+                </td>
+            </tr>
+
+
+
+            @empty
+
+            @endforelse
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@endsection
