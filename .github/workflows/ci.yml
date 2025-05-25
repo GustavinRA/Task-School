@@ -10,7 +10,7 @@ jobs:
       mysql:
         image: mysql:8
         env:
-          MYSQL_ROOT_PASSWORD: 1910
+          MYSQL_ROOT_PASSWORD: 2909
           MYSQL_DATABASE: laravel
         ports:
           - 3306:3306
@@ -18,34 +18,44 @@ jobs:
           --health-cmd="mysqladmin ping --silent"
           --health-interval=10s
           --health-timeout=5s
-          --health-retries=3
+          --health-retries=10
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Clonar o código
+      uses: actions/checkout@v3
 
     - name: Configurar PHP
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.2'
         extensions: mbstring, pdo, mysql
+        coverage: none
 
     - name: Instalar dependências
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: Copiar .env
-      run: cp .env.example .env
+    - name: Criar arquivo .env
+      run: |
+        echo "APP_NAME=Laravel" > .env
+        echo "APP_ENV=testing" >> .env
+        echo "APP_KEY=" >> .env
+        echo "APP_DEBUG=true" >> .env
+        echo "APP_URL=http://localhost" >> .env
+        echo "LOG_CHANNEL=stack" >> .env
+        echo "DB_CONNECTION=mysql" >> .env
+        echo "DB_HOST=127.0.0.1" >> .env
+        echo "DB_PORT=3306" >> .env
+        echo "DB_DATABASE=laravel" >> .env
+        echo "DB_USERNAME=root" >> .env
+        echo "DB_PASSWORD=2909" >> .env
 
     - name: Gerar chave da aplicação
       run: php artisan key:generate
 
-    - name: Configurar banco de dados no .env
+    - name: Limpar e recarregar configurações
       run: |
-        sed -i 's/DB_CONNECTION=.*/DB_CONNECTION=mysql/' .env
-        sed -i 's/DB_HOST=.*/DB_HOST=127.0.0.1/' .env
-        sed -i 's/DB_PORT=.*/DB_PORT=3306/' .env
-        sed -i 's/DB_DATABASE=.*/DB_DATABASE=laravel/' .env
-        sed -i 's/DB_USERNAME=.*/DB_USERNAME=root/' .env
-        sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=1910/' .env
+        php artisan config:clear
+        php artisan config:cache
 
     - name: Rodar migrações
       run: php artisan migrate --force
