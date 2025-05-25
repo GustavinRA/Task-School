@@ -8,3 +8,4 @@
 </p>
 
 Este projeto está sendo desenvolvido como parte da disciplina de Fábrica de Software, para uma fábrica de software que desenvolve aplicações para instituições educacionais. A fábrica necessita de um software para gerenciar suas tarefas e tem como objetivo criar uma ferramenta de monitoramento de atividades para equipes de desenvolvimento. A aplicação permite o gerenciamento de tarefas e o acompanhamento do progresso dos projetos utilizando o modelo Kanban, promovendo organização, produtividade e visibilidade em tempo real do fluxo de trabalho.
+Usando linguagem de programação PHP com seu framework Laravel é para banco de dados MySql
