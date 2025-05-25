@@ -6,6 +6,8 @@
     
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
     <title>Task School</title>
 </head>
 <body>
@@ -29,7 +31,7 @@
 
 
       <div class="text-end">
-        <a href="{{ route('user.create') }}" class="btn btn-warning">Login</a>
+          <a href="{{ route('login.destroy') }}" class="btn btn-outline-light me-2">Sair</a>
       </div>
       
     </div>
