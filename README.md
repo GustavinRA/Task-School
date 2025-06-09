@@ -36,9 +36,11 @@ Gerar a chave no arquivo .env.
 php artisan key:generate
 ```
 
-Executar as migration para criar a base de dados e as tabelas.
+Executar as migration e seed para criar a base de dados e as tabelas.
 ```
 php artisan migrate
+php artisan db:seed
+
 ```
 
 Iniciar o projeto criado com Laravel.

@@ -1,5 +1,7 @@
 //Impotando arquivo bootstrap
 import './bootstrap';
+import './scripts.js';
+import '../css/styleKanban.css';
 
 //Apresentar e ocultar a senha e substituir o ícone
 window.togglePassword = function(fieldId, toggleIcon){

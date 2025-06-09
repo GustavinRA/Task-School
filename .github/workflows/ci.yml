@@ -10,7 +10,7 @@ jobs:
       mysql:
         image: mysql:8
         env:
-          MYSQL_ROOT_PASSWORD: 2909
+          MYSQL_ROOT_PASSWORD: 1910
           MYSQL_DATABASE: laravel
         ports:
           - 3306:3306
@@ -53,7 +53,7 @@ jobs:
         echo "DB_PORT=3306" >> .env
         echo "DB_DATABASE=laravel" >> .env
         echo "DB_USERNAME=root" >> .env
-        echo "DB_PASSWORD=2909" >> .env
+        echo "DB_PASSWORD=1910" >> .env
 
     - name: Gerar chave da aplicação
       run: php artisan key:generate

@@ -34,7 +34,7 @@ class LoginController extends Controller
         $user = User::find($user->id);
 
         //Redirect
-        return redirect()->route('user.index');
+        return redirect()->route('kanban.index');
     }
 
     public function destroy(){
