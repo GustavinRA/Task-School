@@ -1,3 +1,5 @@
+/* styleKanban.css */
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 .navbar-custom{
@@ -7,10 +9,11 @@
 
 body{
     background-color:#262827;
+    /* Adicione uma cor de texto geral para o corpo */
+    color: #E0E0E0; /* Um cinza claro para o texto geral do corpo */
 }
 
-
-
+/* KANBAN (seus estilos existentes) */
 .kanban * {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -18,8 +21,7 @@ body{
     box-sizing: border-box;
 }
 
-
-/* KANBAN */ 
+/* KANBAN */
 .kanban {
     display: flex;
     justify-content: center; /* <-- Adiciona isso */
@@ -30,8 +32,6 @@ body{
     overflow-x: auto;
     overflow-y: hidden;
 }
-
-
 
 .kanban-column {
     display: flex;
@@ -55,7 +55,6 @@ body{
     left: 0;
 }
 
-
 .kanban-title {
     display: flex;
     justify-content: space-between;
@@ -64,22 +63,32 @@ body{
 
 .kanban-title h2 {
     font-size: 18px;
-    color: #4b5563;
+    color: #4b5563; /* Cor original do título da coluna, você pode querer mudar isso também */
     font-weight: 600;
     text-transform: uppercase;
-
 }
-.kanban-column[data-id="1"] .kanban-title h2 { color: #DC5A59; }   /* rosa escuro */
-.kanban-column[data-id="2"] .kanban-title h2 { color: #fd7e14; }   /* laranja */
-.kanban-column[data-id="3"] .kanban-title h2 { color: #2f9e44; }   /* verde escuro */
+
+.kanban-column[data-id="1"] .kanban-title h2 { color: #DC5A59; }    /* rosa escuro */
+.kanban-column[data-id="2"] .kanban-title h2 { color: #fd7e14; }    /* laranja */
+.kanban-column[data-id="3"] .kanban-title h2 { color: #2f9e44; }    /* verde escuro */
 
 
 .add-card {
-    color: #4b5563;
-    font-size: 20px;
-    background-color: transparent;
-    cursor: pointer;
+    color: #ffffff;
+    font-size: 14px;
+    background-color: #6c757d;
+    padding: 6px 12px;
     border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.add-card:hover {
+    background-color: #5a6268;
 }
 
 .kanban-cards {
@@ -96,11 +105,12 @@ body{
     display: flex;
     flex-direction: column;
     gap: 8px;
-    background-color: #ffffff;
+    background-color: #494E52;
     border-radius: 14px;
     padding: 10px;
     box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.1);
     cursor: grab;
+    color: #EBB666; /* Cor do texto dentro do card */
 }
 
 .badge {
@@ -115,13 +125,13 @@ body{
 .badge.medium { background-color: #fea065; }
 .badge.low { background-color: #92a5fb; }
 
-.card-icons {
-    display: flex;
-    gap: 18px;
+.card-icons i {
+    cursor: pointer;
+    transition: color 0.2s;
 }
 
-.card-icons i {
-    color: #a8a8aa;
+.card-icons i:hover {
+    color: #ffffff;
 }
 
 .user img {
@@ -152,4 +162,40 @@ body{
 .kanban *::-webkit-scrollbar-thumb {
     background-color: #b7d3fb;
     border-radius: 20px;
+}
+
+/* --- NOVAS REGRAS PARA O FORMULÁRIO DE CRIAÇÃO/EDIÇÃO --- */
+
+/* Cor do título "Nova Tarefa" */
+.container h2.mb-4 {
+    color: #ADD8E6; /* Um azul claro */
+}
+
+/* Cor das labels "Título", "Prioridade", "Descrição" */
+.container .form-label {
+    color: #C0C0C0; /* Um cinza prateado */
+}
+
+/* Cor do texto dentro dos campos de input, select e textarea */
+/* Se os campos de input ficarem muito escuros, você pode ajustá-los */
+.form-control, .form-select {
+    background-color: #373C3F; /* Mesma cor do background da coluna */
+    color: #E0E0E0; /* Cor clara para o texto digitado */
+    border: 1px solid #5A6268; /* Borda mais visível */
+}
+
+/* Placeholder text color for input fields */
+.form-control::placeholder, .form-select::placeholder {
+    color: #A0A0A0; /* Cor mais clara para o placeholder */
+}
+
+/* styleKanban.css */
+
+/* ... (seus estilos existentes) ... */
+
+.kanban-card .card-date {
+    font-size: 0.8em; /* Texto menor */
+    color: #A0A0A0;  /* Cor cinza claro */
+    margin-top: -5px; /* Ajuste a margem se necessário para ficar mais próximo do título */
+    margin-bottom: 5px; /* Espaçamento da data para os ícones */
 }
